@@ -22,8 +22,8 @@ android {
         applicationId "io.tensevntysevn.feedback"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 202101043
-        versionName "11.5.2.2"
+        versionCode 202101044
+        versionName "11.5.2.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
