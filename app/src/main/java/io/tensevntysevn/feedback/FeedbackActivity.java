@@ -17,7 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -95,8 +94,6 @@ public class FeedbackActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
-        // floatingActionButton();
-
         setActionBarToogle();
 
         //setLocationPermission();
@@ -143,16 +140,6 @@ public class FeedbackActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    final void floatingActionButton(){
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            final public void onClick(View view) {
-                share();
-            }
-        });
     }
 
     @Override
