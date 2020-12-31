@@ -21,9 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".FeedbackActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar"
-            android:hardwareAccelerated="true"></activity>
+            android:hardwareAccelerated="true">
+        </activity>
     </application>
 </manifest>
