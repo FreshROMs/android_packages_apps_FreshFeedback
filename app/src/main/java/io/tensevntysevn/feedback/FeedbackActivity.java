@@ -221,7 +221,7 @@ public class FeedbackActivity extends AppCompatActivity
 
             public void onReceivedError(WebView mWebView, int i, String s, String d1)
             {
-                Toasty.error(getApplicationContext(),"No Internet Connection!").show();
+                Toasty.error(getApplicationContext(),"You are offline").show();
                 mWebView.loadUrl("file:///android_asset/net_error.html");
             }
 
