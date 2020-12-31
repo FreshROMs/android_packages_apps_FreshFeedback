@@ -20,7 +20,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "io.tensevntysevn.feedback"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 202101042
         versionName "11.5.2.0"
