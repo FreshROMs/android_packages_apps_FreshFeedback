@@ -3,5 +3,6 @@
     <color name="colorPrimary">#ff8f00</color>
     <color name="colorPrimaryDark">#c56000</color>
     <color name="colorAccent">#ff8f00</color>
+    <color name="splash_background">?android:attr/colorBackground</color>
     <color name="iconBackground">#fcb642</color>
 </resources>
