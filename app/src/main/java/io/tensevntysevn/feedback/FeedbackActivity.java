@@ -74,7 +74,6 @@ public class FeedbackActivity extends AppCompatActivity
     private int mOriginalSystemUiVisibility;
     NestedScrollView nestedScrollView;
     final String url="https://tiny.cc/FRSH-Feedback";
-    final String omc="https://tiny.cc/FRSH-OMC";
 
     final String admob_app_id = "ca-app-pub-3940256099942544~3347511713";
     final String admob_banner_id = "ca-app-pub-3940256099942544/6300978111";
@@ -682,13 +681,17 @@ public class FeedbackActivity extends AppCompatActivity
             setTitle("Feedback");
             mWebView.setVisibility(View.VISIBLE);
             frameLayout.setVisibility(View.GONE);
+
+            final String url="https://tiny.cc/FRSH-Feedback";
             mWebView.loadUrl(url);
 
         } else if (id == R.id.nav_omc) {
             setTitle("OMC Request");
             mWebView.setVisibility(View.VISIBLE);
             frameLayout.setVisibility(View.GONE);
-            mWebView.loadUrl(omc);
+
+            final String url="https://tiny.cc/FRSH-OMC";
+            mWebView.loadUrl(url);
         }
 
         if (fragment != null) {
