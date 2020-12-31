@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_title"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="25dp"
