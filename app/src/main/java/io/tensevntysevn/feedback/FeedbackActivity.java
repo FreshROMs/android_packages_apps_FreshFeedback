@@ -633,11 +633,6 @@ public class FeedbackActivity extends AppCompatActivity
         else if(id == R.id.action_share){
             share();
         }
-        else if(id == R.id.action_copy){
-            copyToPanel(getApplicationContext(),mWebView.getUrl());
-            Snackbar snackbar = Snackbar.make(drawerLayout, "Link Copied.", Snackbar.LENGTH_LONG);
-            snackbar.show();
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -682,9 +677,7 @@ public class FeedbackActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_contact) {
-            //contact
-        } else if (id == R.id.nav_home) {
+        if (id == R.id.nav_home) {
             fragment = null;
             setTitle("Feedback");
             mWebView.setVisibility(View.VISIBLE);
