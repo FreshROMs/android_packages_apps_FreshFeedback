@@ -17,7 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -94,8 +93,6 @@ public class FeedbackActivity extends AppCompatActivity
         setMySwipeRefreshLayout();
 
         setSupportActionBar(toolbar);
-
-        // floatingActionButton();
 
         setActionBarToogle();
 
