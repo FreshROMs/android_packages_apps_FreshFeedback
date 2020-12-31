@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="678dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="53dp">
+        tools:layout_editor_absoluteY="53dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:id="@+id/textView3"
