@@ -75,9 +75,6 @@ public class FeedbackActivity extends AppCompatActivity
     final String url="https://tiny.cc/FRSH-Feedback";
     final String omc="https://tiny.cc/FRSH-OMC";
 
-    final String admob_app_id = "ca-app-pub-3940256099942544~3347511713";
-    final String admob_banner_id = "ca-app-pub-3940256099942544/6300978111";
-    final String admob_inter_id = "ca-app-pub-3940256099942544/1033173712";
     FrameLayout frameLayout;
 
     @Override
