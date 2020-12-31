@@ -1,5 +1,5 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:drawable="@color/splash_background" />
+	<item android:drawable="?android:attr/colorBackground" />
 	<item android:bottom="48dp" android:width="144dp" android:height="144dp" android:drawable="@mipmap/ic_launcher_splash" android:gravity="center" />
 	<item android:bottom="64dp" android:width="36dp" android:height="37.27dp" android:drawable="@drawable/tenseventyseven_dev_logo" android:gravity="bottom|center" />
 </layer-list>
