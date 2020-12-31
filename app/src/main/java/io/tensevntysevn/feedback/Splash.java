@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package io.tensevntysevn.feedback;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +19,7 @@ public class Splash extends Activity {
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(Splash.this,MainActivity.class);
+                    Intent intent = new Intent(Splash.this,FeedbackActivity.class);
                     startActivity(intent);
                 }
             }

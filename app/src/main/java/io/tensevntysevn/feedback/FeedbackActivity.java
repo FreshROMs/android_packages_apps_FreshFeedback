@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package io.tensevntysevn.feedback;
 
 import android.Manifest;
 import android.app.Activity;
@@ -47,31 +47,20 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.firebase.analytics.FirebaseAnalytics;
-import com.onesignal.OneSignal;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import es.dmoral.toasty.Toasty;
 
-public class MainActivity extends AppCompatActivity
+public class FeedbackActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment = null;
-    private FirebaseAnalytics mFirebaseAnalytics;
     DrawerLayout drawerLayout;
     WebView mWebView;
     private Menu optionsMenu;
     Toolbar toolbar;
     NavigationView navigationView;
-    AdView mAdView;
-    InterstitialAd mInterstitialAd;
     ProgressBar progressBar;
 
     private ValueCallback<Uri> mUploadMessage;
@@ -84,7 +73,7 @@ public class MainActivity extends AppCompatActivity
     private int mOriginalOrientation;
     private int mOriginalSystemUiVisibility;
     NestedScrollView nestedScrollView;
-    final String url="https://google.com";
+    final String url="https://tiny.cc/FRSH-Feedback";
 
     final String admob_app_id = "ca-app-pub-3940256099942544~3347511713";
     final String admob_banner_id = "ca-app-pub-3940256099942544/6300978111";
@@ -98,7 +87,7 @@ public class MainActivity extends AppCompatActivity
 
         viewInit();
 
-        setTitle("WebView");
+        setTitle("Feedback");
 
         mWebView.loadUrl(url);
 
@@ -106,21 +95,15 @@ public class MainActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
-        //setmFirebaseAnalytics();
-
-        floatingActionButton();
+        // floatingActionButton();
 
         setActionBarToogle();
 
         //setLocationPermission();
 
-        oneSignalInit();
-
-        //checkPermission();//storage
+        checkPermission();
 
         webSettings();
-
-        setAdmob();
 
         //setRTL();
     }
@@ -130,27 +113,6 @@ public class MainActivity extends AppCompatActivity
         {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
-    }
-
-
-    final void setAdmob(){
-        MobileAds.initialize(this, admob_app_id);
-
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        AdView adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId(admob_banner_id);
-
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(admob_inter_id);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        //  requestNewInterstitial(); //add test device
     }
 
 
@@ -165,15 +127,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
         );
-    }
-
-
-   final void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("B9C840C4E9AD8EC5D1497C9A62C56374")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
     }
 
     final void setLocationPermission(){
@@ -202,18 +155,6 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    final void setmFirebaseAnalytics(){
-        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        Bundle params = new Bundle();
-        params.putString("class", "MainActivity");
-        params.putString("userid", "12564578");
-        firebaseAnalytics.logEvent("MainActivity", params);
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, params);
-
-    }
-
-
     @Override
     final public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
@@ -231,9 +172,9 @@ public class MainActivity extends AppCompatActivity
         {
             if (null == mUploadMessage)
                 return;
-            // Use MainActivity.RESULT_OK if you're implementing WebViewFragment inside Fragment
+            // Use FeedbackActivity.RESULT_OK if you're implementing WebViewFragment inside Fragment
             // Use RESULT_OK only if you're implementing WebViewFragment inside an Activity
-            Uri result = intent == null || resultCode != MainActivity.RESULT_OK ? null : intent.getData();
+            Uri result = intent == null || resultCode != FeedbackActivity.RESULT_OK ? null : intent.getData();
             mUploadMessage.onReceiveValue(result);
             mUploadMessage = null;
         }
@@ -626,19 +567,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    final void oneSignalInit() {
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
-    }
-
     protected void checkPermission(){
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
             if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
                 if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
                             ActivityCompat.requestPermissions(
-                                    MainActivity.this,
+                                    FeedbackActivity.this,
                                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                     123
                             );
@@ -646,7 +580,7 @@ public class MainActivity extends AppCompatActivity
                 }else {
                     // Request permission
                     ActivityCompat.requestPermissions(
-                            MainActivity.this,
+                            FeedbackActivity.this,
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             123
                     );
@@ -660,7 +594,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed(){
         if(getSupportActionBar().getTitle().equals("Local Page")){
-            setTitle("WebView");
+            setTitle("Feedback");
             FrameLayout frameLayout = findViewById(R.id.content_frame);
             frameLayout.setVisibility(View.GONE);
             mWebView.setVisibility(View.VISIBLE);
@@ -675,7 +609,7 @@ public class MainActivity extends AppCompatActivity
                     .setNegativeButton("No", null)
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         final public void onClick(DialogInterface arg0, int arg1) {
-                            MainActivity.super.onBackPressed();
+                            FeedbackActivity.super.onBackPressed();
                         }
                     }).create().show();
         }
@@ -721,8 +655,8 @@ public class MainActivity extends AppCompatActivity
     final void share(){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, " Posted By ... : "+mWebView.getUrl());
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share your Feedback");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Sent via the Feedback app: "+mWebView.getUrl());
         startActivity(Intent.createChooser(sharingIntent, "Share"));
     }
 
@@ -751,7 +685,7 @@ public class MainActivity extends AppCompatActivity
             //contact
         } else if (id == R.id.nav_home) {
             fragment = null;
-            setTitle("WebView");
+            setTitle("Feedback");
             mWebView.setVisibility(View.VISIBLE);
             frameLayout.setVisibility(View.GONE);
             mWebView.loadUrl(url);
@@ -759,12 +693,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_info) {
             frameLayout.setVisibility(View.VISIBLE);
             fragment = new About();
-        } else if (id == R.id.nav_share) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                //log.d("TAG", "The intersitial wasn't loaded yet.");
-            }
         }
 
         if (fragment != null) {

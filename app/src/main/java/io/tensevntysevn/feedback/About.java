@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package io.tensevntysevn.feedback;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

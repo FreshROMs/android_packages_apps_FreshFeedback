@@ -1,18 +1,13 @@
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
-
 
 buildscript {
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.11.0, 0.99.99]'
-        classpath 'com.google.gms:google-services:4.0.1' // google-services plugin
     }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 
 
@@ -24,18 +19,11 @@ repositories {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.myapplication"
+        applicationId "io.tensevntysevn.feedback"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-
-        manifestPlaceholders = [
-                onesignal_app_id               : 'd341be2b-7348-4823-ac1a-422431b33af8',
-                // Project number pulled from dashboard, local value is ignored.
-                onesignal_google_project_number: 'REMOTE'
-        ]
+        versionCode 202101041
+        versionName "11.5.2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -48,13 +36,9 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-ads:17.1.2'
     implementation 'com.github.GrenderG:Toasty:1.4.0'
-    implementation 'com.onesignal:OneSignal:[3.9.1, 3.99.99]'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.google.firebase:firebase-ads:17.1.2'
-    implementation 'com.google.firebase:firebase-core:16.0.7'
 
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'

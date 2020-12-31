@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package io.tensevntysevn.feedback;
 
 import org.junit.Test;
 
